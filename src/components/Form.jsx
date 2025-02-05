@@ -28,7 +28,7 @@ const Form = () => {
 
   return (
     <>
-      <div className="bg-blue-100 p-5 w-72 rounded-2xl place-self-center mt-20">
+      <div className="bg-[#90e0ef] p-5 w-72 rounded-2xl place-self-center mt-20 text-block">
         <form className="w-64" onSubmit={handleSubmit(onSend)}>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -104,11 +104,11 @@ const Form = () => {
             )}
           </div>
           <button
-            // disabled={!isValid}
+            disabled={!isValid}
             type="submit"
             className={
               !isValid
-                ? "text-white bg-blue-100 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-300 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                ? "text-white bg-blue-100  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-300 "
                 : "text-white bg-blue-100  hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-800 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             }
           >
