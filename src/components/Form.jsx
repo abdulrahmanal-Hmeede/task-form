@@ -37,7 +37,9 @@ const Form = () => {
     <>
       <div className="bg-[#90e0ef] p-5 w-72 rounded-2xl place-self-center mt-20 text-block place-items-center">
         <IoIosLogIn className="text-[#0077b6] text-center font-bold size-8" />
-        <h1 className="text-[#0077b6] text-center font-bold">تسجيل الدخول</h1>
+        <h1 className="text-[#0077b6] text-center font-bold">
+          صفحة تسجيل الدخول
+        </h1>
         <form className="w-64" onSubmit={handleSubmit(onSend)}>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -117,11 +119,11 @@ const Form = () => {
             type="submit"
             className={
               !isValid
-                ? "text-white bg-[#ade8f4]  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#ade8f4] "
-                : "text-white bg-[#023e8a]  hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-[#023e8a] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                ? "text-[#00b4d8] bg-[#ade8f4]  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#ade8f4] "
+                : "text-[#00b4d8] bg-[#023e8a]  hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-[#023e8a] dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             }
           >
-            Add
+            Login
           </button>
         </form>
         <p className="text-green-700 text-center font-bold"> {state} </p>
