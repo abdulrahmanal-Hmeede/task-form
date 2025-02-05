@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -16,6 +16,8 @@ const schema = z
   });
 
 const Form = () => {
+  const [state, setState] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -24,11 +26,12 @@ const Form = () => {
 
   const onSend = (data) => {
     console.log(data);
+    setState("تم تسجيل الدخول بنجاح");
   };
 
   return (
     <>
-      <div className="bg-[#90e0ef] p-5 w-72 rounded-2xl place-self-center mt-20 text-block">
+      <div className="bg-[#90e0ef] p-5 w-72 rounded-2xl place-self-center mt-50 text-block">
         <form className="w-64" onSubmit={handleSubmit(onSend)}>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -115,6 +118,7 @@ const Form = () => {
             Add
           </button>
         </form>
+        <p className="text-green-700 center"> {state} </p>
       </div>
     </>
   );
