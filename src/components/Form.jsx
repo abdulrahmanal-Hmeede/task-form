@@ -24,9 +24,10 @@ const Form = () => {
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm({ resolver: zodResolver(schema) });
+  } = useForm({ resolver: zodResolver(schema), mode: "onChange" });
 
-  const onSend = (data) => {
+  const onSend = (data, e) => {
+    e.preventDefault();
     console.log(data);
     setState("تم تسجيل الدخول بنجاح");
   };
