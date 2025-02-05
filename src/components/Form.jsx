@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { IoIosLogIn } from "react-icons/io";
 
 const schema = z
   .object({
@@ -21,6 +22,7 @@ const Form = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm({ resolver: zodResolver(schema) });
 
@@ -31,7 +33,9 @@ const Form = () => {
 
   return (
     <>
-      <div className="bg-[#90e0ef] p-5 w-72 rounded-2xl place-self-center mt-50 text-block">
+      <div className="bg-[#90e0ef] p-5 w-72 rounded-2xl place-self-center mt-20 text-block place-items-center">
+        <IoIosLogIn className="text-[#0077b6] text-center font-bold size-8" />
+        <h1 className="text-[#0077b6] text-center font-bold">تسجيل الدخول</h1>
         <form className="w-64" onSubmit={handleSubmit(onSend)}>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -118,7 +122,7 @@ const Form = () => {
             Add
           </button>
         </form>
-        <p className="text-green-700 center"> {state} </p>
+        <p className="text-green-700 text-center font-bold"> {state} </p>
       </div>
     </>
   );
