@@ -30,6 +30,7 @@ const Form = () => {
     e.preventDefault();
     console.log(data);
     setState("تم تسجيل الدخول بنجاح");
+    reset();
   };
 
   return (
