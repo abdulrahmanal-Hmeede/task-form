@@ -3,11 +3,17 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const schema = z.object({
-  name: z.string().min(3, { message: "أدخل اسم أكبر من ثلاثة حروف" }),
-  email: z.string().email({ message: "أدخل ايميل صحيح" }),
-  pass: z.string().min(8, { message: "أدخل كلمة مرور قوية" }),
-});
+const schema = z
+  .object({
+    name: z.string().min(3, { message: "أدخل اسم أكبر من ثلاثة حروف" }),
+    email: z.string().email({ message: "أدخل ايميل صحيح" }),
+    pass: z.string().min(8, { message: "أدخل كلمة مرور قوية" }),
+    confirmPassword: z.string().min(8, { message: "يجب تأكيد كلمة المرور" }),
+  })
+  .refine((data) => data.pass === data.confirmPassword, {
+    message: "كلمة المرور غير متطابقة",
+    path: ["confirmPassword"],
+  });
 
 const Form = () => {
   const {
@@ -22,7 +28,7 @@ const Form = () => {
 
   return (
     <>
-      <div className="bg-blue-100 p-3 w-72 rounded-2xl place-self-center mt-20">
+      <div className="bg-blue-100 p-5 w-72 rounded-2xl place-self-center mt-20">
         <form className="w-64" onSubmit={handleSubmit(onSend)}>
           <div className="relative z-0 w-full mb-5 group">
             <input
@@ -79,8 +85,26 @@ const Form = () => {
               <p className="text-red-600">{errors.pass.message}</p>
             )}
           </div>
+          <div className="relative z-0 w-full mb-5 group">
+            <input
+              {...register("confirmPassword")}
+              type="password"
+              id="confirmPassword"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              htmlFor="confirmPassword"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Confirm Password
+            </label>
+            {errors.confirmPassword && (
+              <p className="text-red-600">{errors.confirmPassword.message}</p>
+            )}
+          </div>
           <button
-            disabled={!isValid}
+            // disabled={!isValid}
             type="submit"
             className={
               !isValid
